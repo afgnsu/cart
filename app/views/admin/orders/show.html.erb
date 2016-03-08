@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>客戶姓名：</strong>
+  <%= @admin_order.name %>
+</p>
+
+<p>
+  <strong>送貨地址：</strong>
+  <%= @admin_order.address %>
+</p>
+
+<p>
+  <strong>狀態：</strong>
+  <%= @admin_order.status %>
+</p>
+
+<p>
+  <strong>付款方式：</strong>
+  <%= @admin_order.payment_method %>
+</p>
+
+<p>
+  <strong>付款狀態：</strong>
+  <%= @admin_order.paid? %>
+</p>
+<%= link_to '編輯', edit_admin_order_path(@admin_order), class: 'btn btn-md btn-info' %>
+<%= link_to '返回', admin_orders_path, class: 'btn btn-md btn-warning' %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>【後台】訂單管理</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr bgcolor="#CCCCCC">
+      <th>客戶姓名</th>
+      <th>送貨地址</th>
+      <th>狀態</th>
+      <th>付款方式</th>
+      <th>付款狀態</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_orders.each do |admin_order| %>
+      <tr>
+        <td><%= admin_order.name %></td>
+        <td><%= admin_order.address %></td>
+        <td><%= admin_order.status %></td>
+        <td><%= admin_order.payment_method %></td>
+        <td><%= admin_order.paid? %></td>
+        <td><%= link_to '詳細', admin_order, class: 'btn btn-xs btn-primary' %>
+        <%= link_to '編輯', edit_admin_order_path(admin_order), class: 'btn btn-xs btn-success' %>
+        <%= link_to '刪除', admin_order, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: '您確定要刪除嗎？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '建立新訂單', new_admin_order_path, class: 'btn btn-md btn-info' %>

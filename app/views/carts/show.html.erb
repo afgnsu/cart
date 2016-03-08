@@ -1,0 +1,32 @@
+<h1>我的購物車</h1>
+<hr>
+<table class="table table-hover">
+  <thead>
+    <tr bgcolor="#CCCCCC">
+      <th>品名</th>
+      <th>價格</th>
+      <th>數量</th>
+      <th>小計</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_cart.line_items.each do |line_item| %>
+    <tr>
+      <td><%= line_item.product.name %></td>
+      <td><%= number_to_currency line_item.unit_price %></td>
+      <td><%= line_item.quantity %></td>
+      <td><%= number_to_currency(line_item.subtotal, unit: "$", delimiter: ",", precision: 0) %></td>
+      <td><%= link_to '刪除', line_item, class: 'btn btn-xs btn-danger', method: :delete %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td colspan="2"></td>
+      <td>合計：</td>
+      <td><%= number_to_currency(current_cart.total, unit: "$", delimiter: ",", precision: 0) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to '付款', new_order_path, class: 'btn btn-md btn-info' %>
+<%= link_to '繼續購物', root_path, class: 'btn btn-md btn-warning' %>

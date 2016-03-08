@@ -1,0 +1,8 @@
+<h1>結帳資訊</h1>
+<hr>
+<%= form_for @order do |f| %>
+  <%= f.text_field :name, placeholder: '請輸入姓名' %>
+  <%= f.text_field :address, placeholder: '請輸入地址' %>
+  <%= f.select :payment_method, %w[Credit ATM] %>
+  <%= f.submit '送出' %>
+<% end %>

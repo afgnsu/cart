@@ -1,0 +1,13 @@
+<h1>商品列表</h1>
+<div class="row col-md-6">
+<table class="table table-hover">
+  <thead>
+  <tr bgcolor="#CCCCCC"><th>編號</td><th>品名</th><th>價格(新台幣)</th></tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+  <tr><td><%= product.id %></td><td><%= link_to product.name, product %></td><td><%= number_to_currency(product.price, unit: "$", delimiter: ",", precision: 0) %></td></tr>
+  <% end %>
+  </tbody>
+</table>
+</div>

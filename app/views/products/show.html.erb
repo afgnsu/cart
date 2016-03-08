@@ -1,0 +1,16 @@
+<h1><%= @product.name %></h1>
+<hr>
+<dl>
+  <dt>描述</dt>
+  <dd><%= @product.description %></dd>
+  <dt>價格</dt>
+  <dd><%= @product.price %></dd>
+  <dt>庫存</dt>
+  <dd><%= @product.stock %></dd>
+</dl>
+
+<%= form_for @line_item do |f| %>
+  <%= f.number_field :quantity %>
+  <%= f.hidden_field :product_id %>
+  <%= f.submit '加入購物車' %>
+<% end %>

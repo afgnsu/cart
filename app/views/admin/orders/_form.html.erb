@@ -1,0 +1,35 @@
+<%= form_for(@admin_order) do |f| %>
+  <% if @admin_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_order.errors.count, "error") %> prohibited this admin_order from being saved:</h2>
+
+      <ul>
+      <% @admin_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, '客戶姓名：' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address, '寄送地址：' %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :status, '狀態：' %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_method, '付款方式：' %><br>
+    <%= f.text_field :payment_method %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit '送出', class: 'btn btn-md btn-info' %>
+    <%= link_to '返回', admin_orders_path, class: 'btn btn-md btn-warning' %>
+  </div>
+<% end %>

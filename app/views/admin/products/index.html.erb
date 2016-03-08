@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>【後台】商品管理</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>品名</th>
+      <th>描述</th>
+      <th>價格</th>
+      <th>庫存</th>
+      <th colspan="3">操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_products.each do |admin_product| %>
+      <tr>
+        <td><%= admin_product.name %></td>
+        <td><%= admin_product.description %></td>
+        <td><%= admin_product.price %></td>
+        <td><%= admin_product.stock %></td>
+        <td><%= link_to '詳細', admin_product, class: 'btn btn-xs btn-primary' %>
+        <%= link_to '編輯', edit_admin_product_path(admin_product), class: 'btn btn-xs btn-success'%>
+        <%= link_to '刪除', admin_product, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: '您確定要刪除嗎？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新增商品', new_admin_product_path, class: 'btn btn-md btn-info' %>

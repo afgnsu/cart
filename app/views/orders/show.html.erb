@@ -1,0 +1,35 @@
+<h1>訂單 #<%= @order.id %></h1>
+<hr>
+<table class="table table-hover">
+  <thead>
+    <tr bgcolor="#CCCCCC">
+      <th>品名</th><th>價格</th><th>數量</th><th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.line_items.each do |line_item| %>
+      <tr>
+        <td><%= link_to line_item.product.name, line_item.product %></td>
+        <td><%= line_item.unit_price %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= line_item.subtotal %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2"></td>
+      <td>total</td>
+      <td><%= @order.total %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h1>交易</h1>
+<hr>
+<ul>
+  <% @order.trades.each do |trade| %>
+  <li><%= trade.trade_number %> <%= trade.paid? ? :已付款 : :未付款 %></li>
+  <% end %>
+</ul>
+
+<%= link_to '付款', checkout_order_path(@order), class: 'btn btn-md btn-info' %>
